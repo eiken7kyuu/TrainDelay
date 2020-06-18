@@ -17,7 +17,7 @@ namespace TrainDelay
         private IRestResponse GetHtml()
         {
             var client = new RestClient("https://transit.yahoo.co.jp/");
-            return client.Execute(new RestRequest($"traininfo/detail/{this.routeNumber}/"));
+            return client.Execute(new RestRequest($"traininfo/detail/{routeNumber}/"));
         }
 
         private bool IsDelayed(IElement element) =>
@@ -36,7 +36,7 @@ namespace TrainDelay
             var header = statusElement.QuerySelector("dt").LastChild.TextContent;
             var message = statusElement.QuerySelector("p").TextContent;
             var routeName = document.QuerySelector("h1").TextContent;
-            new LineNotify().Send($"\r\n【{routeName}】\r\n【{header}】\r\n{message}");
+            LineNotify.Send($"\r\n【{routeName}】\r\n【{header}】\r\n{message}");
         }
     }
 }
