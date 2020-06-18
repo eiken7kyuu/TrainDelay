@@ -18,7 +18,7 @@ namespace TrainDelay
             }
             catch (Exception e)
             {
-                LineNotify.Send(e.ToString());
+                Console.WriteLine(e.ToString());
             }
         }
     }
